@@ -80,4 +80,4 @@ Os prints estão na pasta `/imagens`, evidenciando:
 
 ## 🧠 Autor
 
-Desenvolvido por João F. durante o bootcamp da DIO 🚀
+Desenvolvido por João Silva durante o bootcamp da DIO 🚀
