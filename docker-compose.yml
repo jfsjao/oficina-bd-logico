@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  ecommerce_postgres:
+    image: postgres:15
+    container_name: ecommerce_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - ecommerce_postgres_data:/var/lib/postgresql/data
+    networks:
+      - ecommerce_net
+
+  ecommerce_pgadmin:
+    image: dpage/pgadmin4
+    container_name: ecommerce_pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - ecommerce_postgres
+    networks:
+      - ecommerce_net
+
+volumes:
+  ecommerce_postgres_data:
+
+networks:
+  ecommerce_net:
+    driver: bridge
